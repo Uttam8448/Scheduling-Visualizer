@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Scheduling Algorithms</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="input">
+                <div class="processTable">
+                    <div class="tHead">
+                        <div class="head" id="processId"><h2>Process ID</h2></div>
+                        <div class="head" id="arrivalTime"><h2>Arrival Time</h2></div>
+                        <div class="head" id="burstTime"><h2>Burst Time</h2></div>
+                    </div>
+                    <table width="100%" class="Table">
+                        <tbody class="tableBody">
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+                
+                <div class="addProcess">
+                    <form action="">
+                        <table>
+                            <td>
+                                    <label for="processId">Process Id :</label></br>
+                                    <input class="inputSection" type="text" name="processId" id="id">         
+                            </td>
+                            <td>
+                                    <label for="arrivalTime">Arrival Time</label></br>
+                                    <input class="inputSection" type="text" name="arrivalTime" id="arrival">   
+                            </td>
+                            <td>
+                                    <label for="burstTime">Burst Time</label></br>
+                                    <input class="inputSection" type="text" name="burstTime" id="burst">    
+                            </td>
+                            <td>
+                                <button class="add">ADD</button>
+                            </td>
+                        </table></br>
+                        <div class="algorithmType">
+                            <label for="menu"><b>Scheduling Algorithm</b></label></br></br>
+                                <select name="menu" id="" style="padding: 10px 20px; cursor: pointer;">
+                                <option value="FCFS" id="FCFS">FCFS (First Come First Serve)</option>
+                                <option value="SJF" id="SJF">SJF (Shortest Job First)</option>
+                                <option value="LJF" id="LJF">LJF (Longest Job First)</option>
+                                <option value="PSA" id="PSA">PSA (Priority Scheduling)</option>
+                                </select>
+                            </br></br>
+                            <input id="enter" style="padding: 10px;color:white; font-weight: bolder; background-color: darkviolet; border-radius: 10px; " type="submit" value="Enter Visualization >">
+                        </div>
+                       
+                    </form>
+                    
+                </div>
+            </div>
+        </div> 
+        <div class="visualize">
+            <div class="timeContainerDiv">
+                <h2 style="text-align:center">Time</h2>
+                <div class="timeContainer">         
+                        <h2 id="time">0</h2>
+                </div>
+            </div>
+
+            <div class="cpuContainer">
+                <h2>CPU</h2>
+                <div class="cpu">
+                    <h2 class="cpuProcess"></h2>
+                </div>
+            </div>
+            <div class="readyQueueContainer">
+                <h2>Ready Queue</h2>
+                <div class="readyQueue">
+                    <div class="gantElements" id="1"></div>
+                    <div class="gantElements" id="2"></div>
+                    <div class="gantElements" id="3"></div>
+                    <div class="gantElements" id="4"></div>
+                    <div class="gantElements" id="5"></div>
+                    <div class="gantElements" id="6"></div>
+                    <div class="gantElements" id="7"></div>
+                    <div class="gantElements" id="8"></div>
+                    <div class="gantElements" id="9"></div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

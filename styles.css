@@ -52,6 +52,9 @@ body .wrapper{
     cursor: pointer;
     align-self: baseline;
 }
+.addProcess{
+    align-items: center;
+}
 .inputSection{
     width:100px;
     height: 30px;
@@ -133,4 +136,8 @@ td{
     align-items: center;
     flex-direction: column;
     gap: 10px;
+}
+#tableInput{
+    justify-content: center;
+    align-items: center;
 }

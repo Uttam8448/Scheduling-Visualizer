@@ -29,7 +29,7 @@
                 
                 <div class="addProcess">
                     <form action="">
-                        <table>
+                        <table id="inputTable">
                             <td>
                                     <label for="processId">Process Id :</label></br>
                                     <input class="inputSection" type="text" name="processId" id="id">         
@@ -49,10 +49,11 @@
                         <div class="algorithmType">
                             <label for="menu"><b>Scheduling Algorithm</b></label></br></br>
                                 <select name="menu" id="" style="padding: 10px 20px; cursor: pointer;">
-                                <option value="FCFS" id="FCFS">FCFS (First Come First Server)</option>
+                                <option value="FCFS" id="FCFS">FCFS (First Come First Serve)</option>
                                 <option value="SJF" id="SJF">SJF (Shortest Job First)</option>
                                 <option value="LJF" id="LJF">LJF (Longest Job First)</option>
-                                <option value="PSA" id="PSA">PSA (Priority Scheduling)</option>
+                                <option value="RRA" id="RRA">RRA (Round Robin Algorithm)</option>
+                                <!-- <option value="PSA" id="PSA">PSA (Priority Scheduling)</option> -->
                                 </select>
                             </br></br>
                             <input id="enter" style="padding: 10px;color:white; font-weight: bolder; background-color: darkviolet; border-radius: 10px; " type="submit" value="Enter Visualization >">

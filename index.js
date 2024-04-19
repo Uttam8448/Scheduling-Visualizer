@@ -44,6 +44,9 @@ function Visualization(){
     else if(document.querySelector('select').value=="LJF"){
         ljf();
     }
+    else if(document.querySelector('select').value=="RRA"){
+        rra();
+    }
     
 }
 function processSort(process){
@@ -290,3 +293,98 @@ function ljf(){
         }
     });
 }
+
+function rra(){
+    let timeQuantum=prompt("Enter time quantum you want for round ronbin algorithm");
+    let timeQuant=timeQuantum;
+    processSort(process);
+    timeCount=0;
+    let running=[,0,];
+    runningProcess.sort((y,z)=>{
+        return y[2]-z[2];   
+    });
+    i=0;
+    document.addEventListener('keydown',(e)=>{
+        if(e.code=="ArrowRight"){
+            if(process.length>i){
+
+                timeCount=timeCount+1;
+                time.innerText=`${timeCount}`;
+
+                //runningProcess filling with current tiumeCount processes
+                while(runningCount<process.length && timeCount==process[runningCount][1]){
+                    runningProcess.push(process[runningCount]);
+                    runningCount++;
+                }
+                if(runningProcess.length>1)
+                    runningProcessSort(runningProcess);
+                if(running[1]==0 && runningProcess.length>0){
+                    running=runningProcess.shift();
+                }
+
+                //Dom Thing
+                if(running[0]!=undefined || runningProcess.length!=0){
+                    if(timeCount>=running[1] && running[2]>0){
+                        if(cpu.textContent==running[0]){
+                            running[2]=running[2]-1;             
+                        }
+                        else{                          
+                            cpu.textContent=`${running[0]}`;
+                        }
+                    }
+                    if(running[2]<1 || timeQuant==0){
+                        if(timeQuant==0 && running[2]>1){
+                            runningProcess.push(running);
+                            runningProcessSort(runningProcess);  
+                            timeQuant=timeQuantum;    
+                        }
+                        else if(running[2]<1){
+                            i++;
+                        }
+                        if(runningProcess.length>0){
+                            running=runningProcess.shift();
+                            cpu.textContent=`${running[0]}`;
+                        }       
+                           
+                    }
+                }
+                else{
+                    cpu.textContent=``;
+                }
+                console.log(timeQuant);
+                timeQuant--;
+                readyQueueHandlerSJF(runningProcess,-1,timeCount);
+            }
+            else{
+                timeCount=0;
+                time.innerText=`${timeCount}`;
+                process=[];
+                runningProcess=[];
+                cpu.textContent=``;
+                for(let j=0;j<9;j++){
+                    document.getElementById(`${j+1}`).textContent='';
+                }
+                location.reload();
+            }
+        }
+    });
+}
+
+// let prior=true;
+// document.querySelector('select').addEventListener('click',()=>{
+//     if(document.querySelector('select').value=="PSA"){
+//         if(prior){
+//         document.querySelector('.tHead').insertAdjacentHTML("beforeend",`<div class="head" style="border-left:1px solid black"><h2>Priority</h2></div>`);
+//         document.querySelector('#inputTable').insertAdjacentHTML("afterend",`<td>
+//                                                                         <label for="priority">priority</label></br>
+//                                                                         <input class="inputSection" type="text" name="priority" id="priority">    
+//                                                                         </td>`);
+//         prior=false;                                                    
+//         }
+//     }
+//     else{
+//         if(process.size==0) {
+//             location.reload();
+//         }
+//     }
+// })
